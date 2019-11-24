@@ -2,9 +2,31 @@ import { getAll } from '../services/states/getAll';
 import { getOne } from '../services/states/getOne';
 import { create } from '../services/states/create';
 import { update } from '../services/states/update';
+import { getByCountry } from '../services/states/getByCountry';
 
 
 
+export function getByCountryData(req, res, next) {
+  try {
+    const { countryId } = req.body;
+    getByCountry(countryId).then(data => {
+      res.status(200).json({
+        message: 'All data',
+        data: data
+      });
+    }).catch(e => {
+      console.log(e);
+    });
+
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({
+      message: 'Something goes wrong',
+      data: {},
+      error: true
+    });
+  }
+};
 export function getAllData(req, res, next) {
   try {
     getAll().then(data => {

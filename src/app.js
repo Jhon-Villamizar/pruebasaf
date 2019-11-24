@@ -1,4 +1,3 @@
-//app nodejs Safetti custom  -- Chef
 import express, { json } from 'express';
 import morgan from 'morgan';//middleware de registrador de solicitudes HTTP
 import cors from 'cors';//cabeceras
@@ -12,10 +11,6 @@ import sellerRoutes from './routes/seller.routes';
 import visitRoutes from './routes/visit.routes';
 import clientRoutes from './routes/client.routes';
 
-// import logsRoutes from './routes/payments.routes';
-// import uerrorsRoutes from './routes/u.routes';
-
-
 //Server express
 const app = express();
 
@@ -23,9 +18,6 @@ const app = express();
 app.use(morgan('dev'));
 app.use(json());
 app.use(cors());
-app.use(express.static('public'));
-app.set('views', path.join(__dirname, 'public/templates'));
-app.set('view engine', 'ejs');
 
 // routes config
 app.use('/api/countries', countryRoutes);
