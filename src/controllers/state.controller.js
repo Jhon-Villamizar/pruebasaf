@@ -70,8 +70,8 @@ export function getOneData(req, res, next) {
 
 export async function createRegister(req, res, next) {
   try {
-    const { name, status, iso3 } = req.body;
-    create(name, status, iso3)
+    const { name, countryId} = req.body;
+    create(name, countryId)
     .then(data => {
       res.status(200).json({
         message: 'Created successfully',

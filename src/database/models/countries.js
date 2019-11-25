@@ -9,16 +9,6 @@ export default (sequelize, DataTypes) => {
       field: 'id'
     },
     name: DataTypes.STRING,
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-      field: 'createdAt'
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-      field: 'updatedAt'
-    }
   }, {});
   countries.associate = function (models) {
     countries.hasMany(models.states, { as: 'states' });

@@ -2,15 +2,31 @@
 module.exports = (sequelize, DataTypes) => {
   const visits = sequelize.define('visits', {
     date: DataTypes.DATE,
-    srId: DataTypes.INTEGER,
+    sellerId: {
+			type: DataTypes.INTEGER(11),
+			allowNull: false,
+			references: {
+				model: 'sellers',
+				key: 'id'
+			},
+			field: 'sellerId'
+		},
     net: DataTypes.INTEGER,
     visitTotal: DataTypes.INTEGER,
     description: DataTypes.STRING,
-    clientId: DataTypes.INTEGER
+    clientId: {
+			type: DataTypes.INTEGER(11),
+			allowNull: false,
+			references: {
+				model: 'clients',
+				key: 'id'
+			},
+			field: 'clientId'
+		}
   }, {});
   visits.associate = function(models) {
     visits.belongsTo(models.clients,{foreignKey: 'clientId', as: 'client'});
-    visits.belongsTo(models.sellers,{foreignKey: 'srId', as: 'seller'});
+    visits.belongsTo(models.sellers,{foreignKey: 'sellerId', as: 'seller'});
   };
   return visits;
 };

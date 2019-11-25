@@ -11,7 +11,7 @@ module.exports = {
       date: {
         type: Sequelize.DATE
       },
-      srId: {
+      sellerId: {
         type: Sequelize.INTEGER
       },
       net: {

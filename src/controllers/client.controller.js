@@ -48,8 +48,8 @@ export function getOneData(req, res, next) {
 
 export async function createRegister(req, res, next) {
   try {
-    const { name, status, iso3 } = req.body;
-    create(name, status, iso3)
+    const { nit, name, address, phone, creditLimit, availableCredit, visitPercentage, description, countryId, stateId, cityId } = req.body;
+    create(nit, name, address, phone, creditLimit, availableCredit, visitPercentage, description, countryId, stateId, cityId)
     .then(data => {
       res.status(200).json({
         message: 'Created successfully',
@@ -70,8 +70,8 @@ export async function createRegister(req, res, next) {
 
 export async function updateRegister(req, res, next) {
   try {
-    const { status,id } = req.body;
-    await update(id, status)
+    const { id, nit, name, address, phone, creditLimit, availableCredit, visitPercentage, description, countryId, stateId, cityId } = req.body;
+    await update(id, nit, name, address, phone, creditLimit, availableCredit, visitPercentage, description, countryId, stateId, cityId)
       .then(data => {
         res.json({
           message: 'Updated successfully',

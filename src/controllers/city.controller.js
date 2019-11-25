@@ -2,9 +2,30 @@ import { getAll } from '../services/cities/getAll';
 import { getOne } from '../services/cities/getOne';
 import { create } from '../services/cities/create';
 import { update } from '../services/cities/update';
+import { getByState } from '../services/cities/getByState'
 
 
+export function getByStateData(req, res, next) {
+  try {
+    const { stateId } = req.body;
+    getByState(stateId).then(data => {
+      res.status(200).json({
+        message: 'All data',
+        data: data
+      });
+    }).catch(e => {
+      console.log(e);
+    });
 
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({
+      message: 'Something goes wrong',
+      data: {},
+      error: true
+    });
+  }
+};
 export function getAllData(req, res, next) {
   try {
     getAll().then(data => {
